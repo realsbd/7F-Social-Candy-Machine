@@ -24,7 +24,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Containers from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
-import '../styles/style.css'
+import './styles/style.css'
 import headSocial from './assets/home/7f social.svg'
 import fpen from './assets/home/7F Pen.svg'
 import zero7 from './assets/home/0000777.svg'
@@ -77,24 +77,22 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect>
-          <WalletDialogProvider>
-            <Home
-              candyMachineId={candyMachineId}
-              connection={connection}
-              txTimeout={txTimeoutInMilliseconds}
-              rpcHost={rpcHost}
-            />
-          </WalletDialogProvider>
-        </WalletProvider>
-      </ConnectionProvider>
       <div className="containers-inner pb-4">
           <div className="lines">
             <img src={headSocial} alt="" className="headSocial" />
             <div className="mintButton mb-2">
-              {/* Insert Connect wallect function */}
-              <Button variant="outline-light" size="lg">Connect Wallet</Button>
+              <ConnectionProvider endpoint={endpoint}>
+                <WalletProvider wallets={wallets} autoConnect>
+                  <WalletDialogProvider>
+                    <Home
+                      candyMachineId={candyMachineId}
+                      connection={connection}
+                      txTimeout={txTimeoutInMilliseconds}
+                      rpcHost={rpcHost}
+                    />
+                  </WalletDialogProvider>
+                </WalletProvider>
+              </ConnectionProvider>
               <Button variant="outline-light" size="lg">Mint with Credit Card</Button>{' '}
             </div>
             

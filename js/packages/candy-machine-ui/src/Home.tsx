@@ -22,6 +22,7 @@ import { MintCountdown } from './MintCountdown';
 import { MintButton } from './MintButton';
 import { GatewayProvider } from '@civic/solana-gateway-react';
 import { sendTransaction } from './connection';
+import { CrossmintPayButton } from "@crossmint/client-sdk-react-ui";
 
 const ConnectButton = styled(WalletDialogButton)`
   width: 100%;
@@ -292,12 +293,11 @@ const Home = (props: HomeProps) => {
   ]);
 
   return (
-    <Container style={{ marginTop: 100 }}>
+    <Container>
       <Container maxWidth="xs" style={{ position: 'relative' }}>
         <Paper
           style={{
-            padding: 24,
-            paddingBottom: 10,
+            margin: 10,
             backgroundColor: '#151A1F',
             borderRadius: 6,
           }}
@@ -500,14 +500,22 @@ const Home = (props: HomeProps) => {
               </MintContainer>
             </>
           )}
-          <Typography
-            variant="caption"
-            align="center"
-            display="block"
-            style={{ marginTop: 7, color: 'grey' }}
-          >
-            Powered by METAPLEX
-          </Typography>
+        </Paper>
+      </Container>
+      <Container maxWidth="xs" style={{ position: 'relative' }}>
+      <Paper
+          style={{
+            margin: 10,
+            backgroundColor: '#151A1F',
+            borderRadius: 6,
+          }}
+        >
+          <CrossmintPayButton
+            collectionTitle="<TITLE_FOR_YOUR_COLLECTION>"
+            collectionDescription="<DESCRIPTION_OF_YOUR_COLLECTION>"
+            collectionPhoto="<OPT_URL_TO_PHOTO_COVER>"
+            clientId="<YOUR_CLIENT_ID>"
+          />
         </Paper>
       </Container>
 
